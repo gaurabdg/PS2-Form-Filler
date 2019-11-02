@@ -1,8 +1,3 @@
-import org.jsoup.*;
-
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -12,23 +7,26 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Iterator;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 class Station{
     private String name;
     private String domain;
     private String location;
-    private int stipend;
+    private String stipend;
     private String branches;
+    private String stationId;
+    private String companyId;
 
-    public Station(String name, String domain, String location) {
+    public Station(String name, String domain, String location, String stationId, String companyId) {
         this.name = name;
         this.domain = domain;
         this.location = location;
+        this.stationId = stationId;
+        this.companyId = companyId;
     }
 
     public String getName() {
@@ -55,16 +53,32 @@ class Station{
         this.location = location;
     }
 
-    public int getStipend() {
+    public String getStipend() {
         return stipend;
     }
 
-    public void setStipend(int stipend) {
+    public void setStipend(String stipend) {
         this.stipend = stipend;
     }
 
     public String getBranches() {
         return branches;
+    }
+
+    public String getStationId() {
+        return stationId;
+    }
+
+    public void setStationId(String stationId) {
+        this.stationId = stationId;
+    }
+
+    public String getCompanyId() {
+        return companyId;
+    }
+
+    public void setCompanyId(String companyId) {
+        this.companyId = companyId;
     }
 
     public void setBranches(String branches) {
@@ -95,32 +109,48 @@ public class script {
         driver.navigate().to("http://psd.bits-pilani.ac.in/Student/ViewActiveStationProblemBankData.aspx");
 
         ArrayList<Station> data = new ArrayList<>();
-        Document doc = Jsoup.parse(driver.getPageSource());
-        Element tableData = doc.select("table").get(0);
-        Elements rows = tableData.select("tr");
-        rows.remove(0);
 
-        for(Element row:rows)
+        WebElement tab = driver.findElement(By.xpath("//table[@id='data-table-hrteam']//tbody"));
+        List<WebElement> rows = tab.findElements(By.tagName("tr"));
+
+        for(WebElement row:rows)
         {
-            Elements children = row.children();
-            data.add(new Station(
-                    children.get(2).text(),
-                    children.get(3).text(),
-                    children.get(1).text()
+            List<WebElement> cols = row.findElements(By.tagName("td"));
+            data.add(new Station(cols.get(2).getText(),
+                    cols.get(3).getText(),
+                    cols.get(1).getText(),
+                    cols.get(5).getAttribute("stationid"),
+                    cols.get(5).getAttribute("companyid")
             ));
         }
+        for(Station s:data)
+        {
+            driver.navigate().to("http://psd.bits-pilani.ac.in/Student/StationproblemBankDetails.aspx?CompanyId="+s.getCompanyId()+"&StationId="+s.getStationId()+"&BatchIdFor=9&PSTypeFor=3");
+            WebElement stp = null;
+            WebElement br = null;
+            try {
+                stp = driver.findElement(By.xpath("//*[@id=\"Stipend\"]"));
+                br = driver.findElement(By.xpath(("//*[@id=\"Project\"]/table/tbody/tr[5]/td[3]/div")));
+            }catch(Exception e)
+            {
+//                e.printStackTrace();
+            }
+            s.setStipend(stp==null?"":stp.getText());
+            s.setBranches(br==null?"":br.getText());
+        }
 
-        System.out.println(data.size());
+//        System.out.println(data.size());
+//        System.out.println(data);
 
         // write to csv
         File file = new File("./data/stations_"+new SimpleDateFormat("dd-MM-yyyy").format(new Date())+".csv");
 
         try(BufferedWriter bw = new BufferedWriter(new FileWriter(file));){
-            bw.write("Name,Domain,Location");
+            bw.write("Name,Domain,Stipend,Location,Branches");
             bw.newLine();
             for(Station st:data)
             {
-                bw.write(st.getName()+","+st.getDomain()+","+st.getLocation());
+                bw.write(st.getName()+","+st.getDomain()+","+st.getStipend()+","+st.getLocation()+","+st.getBranches());
                 bw.newLine();
             }
         }catch(IOException e)
