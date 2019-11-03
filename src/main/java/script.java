@@ -20,6 +20,15 @@ class Station{
     private String branches;
     private String stationId;
     private String companyId;
+    private String description;
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
     public Station(String name, String domain, String location, String stationId, String companyId) {
         this.name = name;
@@ -123,24 +132,25 @@ public class script {
                     cols.get(5).getAttribute("companyid")
             ));
         }
+
         for(Station s:data)
         {
             driver.navigate().to("http://psd.bits-pilani.ac.in/Student/StationproblemBankDetails.aspx?CompanyId="+s.getCompanyId()+"&StationId="+s.getStationId()+"&BatchIdFor=9&PSTypeFor=3");
             WebElement stp = null;
             WebElement br = null;
+            WebElement des = null;
             try {
                 stp = driver.findElement(By.xpath("//*[@id=\"Stipend\"]"));
                 br = driver.findElement(By.xpath(("//*[@id=\"Project\"]/table/tbody/tr[5]/td[3]/div")));
+                des = driver.findElement(By.xpath("/html/body/form/div[3]/div[2]/div/div[2]/table[1]/tbody/div/table/tbody/tr[2]/td[2]"));
             }catch(Exception e)
             {
 //                e.printStackTrace();
             }
             s.setStipend(stp==null?"":stp.getText());
             s.setBranches(br==null?"":br.getText());
+            s.setDescription(des==null?"":des.getText());
         }
-
-//        System.out.println(data.size());
-//        System.out.println(data);
 
         // write to csv
         File file = new File("./data/stations_"+new SimpleDateFormat("dd-MM-yyyy").format(new Date())+".csv");
@@ -150,7 +160,7 @@ public class script {
             bw.newLine();
             for(Station st:data)
             {
-                bw.write(st.getName()+","+st.getDomain()+","+st.getStipend()+","+st.getLocation()+","+st.getBranches());
+                bw.write(st.getName()+","+st.getDomain()+","+st.getStipend()+","+st.getLocation()+","+st.getBranches()+","+st.getDescription());
                 bw.newLine();
             }
         }catch(IOException e)
