@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="03836d6a-e20d-4bc5-b5c2-6ff83b23615e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/stations_02-11-2019.csv" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/script.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/script.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Station.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Station.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/script.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/script.class" afterDir="false" />
@@ -74,7 +73,9 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1572546955942</updated>
-      <workItem from="1572546960780" duration="29641000" />
+      <workItem from="1572546960780" duration="34070000" />
+      <workItem from="1572849034219" duration="7506000" />
+      <workItem from="1572897825711" duration="1844000" />
     </task>
     <task id="LOCAL-00001" summary="Selenium only implementation, added stipend scraping">
       <created>1572686789144</created>
@@ -90,7 +91,14 @@
       <option name="project" value="LOCAL" />
       <updated>1572688238191</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="added problem statement">
+      <created>1572764293658</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1572764293658</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -101,7 +109,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
@@ -109,6 +119,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Selenium only implementation, added stipend scraping" />
-    <option name="LAST_COMMIT_MESSAGE" value="Selenium only implementation, added stipend scraping" />
+    <MESSAGE value="added problem statement" />
+    <option name="LAST_COMMIT_MESSAGE" value="added problem statement" />
   </component>
 </project>
