@@ -1,14 +1,13 @@
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.io.*;
-import java.lang.reflect.Array;
 import java.text.SimpleDateFormat;
 import java.util.*;
-import java.util.concurrent.TimeUnit;
 
 class Station{
     private String name;
@@ -19,6 +18,24 @@ class Station{
     private String stationId;
     private String companyId;
     private String description;
+    private String skillSet;
+    private String prefElecs;
+
+    public String getSkillSet() {
+        return skillSet;
+    }
+
+    public String getPrefElecs() {
+        return prefElecs;
+    }
+
+    public void setSkillSet(String skillSet) {
+        this.skillSet = skillSet;
+    }
+
+    public void setPrefElecs(String prefElecs) {
+        this.prefElecs = prefElecs;
+    }
 
     public String getDescription() {
         return description;
@@ -28,7 +45,7 @@ class Station{
         this.description = description;
     }
 
-    public Station(String name, String domain, String location, String stationId, String companyId) {
+    Station(String name, String domain, String location, String stationId, String companyId) {
         this.name = name;
         this.domain = domain;
         this.location = location;
@@ -72,20 +89,12 @@ class Station{
         return branches;
     }
 
-    public String getStationId() {
+    String getStationId() {
         return stationId;
     }
 
-    public void setStationId(String stationId) {
-        this.stationId = stationId;
-    }
-
-    public String getCompanyId() {
+    String getCompanyId() {
         return companyId;
-    }
-
-    public void setCompanyId(String companyId) {
-        this.companyId = companyId;
     }
 
     public void setBranches(String branches) {
@@ -94,7 +103,7 @@ class Station{
 }
 
 public class script {
-    public static void main(String args[])
+    public static void main(String[] args)
     {
         System.setProperty("webdriver.chrome.driver", "./drivers/chromedriver");
         WebDriver driver = new ChromeDriver();
@@ -122,15 +131,12 @@ public class script {
         List<WebElement> rows = tab.findElements(By.tagName("tr"));
         ArrayList<Station> newps = new ArrayList<>();
         HashSet prev = null;
-        boolean firstRun = false;
-        if(!firstRun)
+
+        try(ObjectInputStream fin = new ObjectInputStream(new FileInputStream("./data/prevData.ser")))
         {
-            try(ObjectInputStream fin = new ObjectInputStream(new FileInputStream("./data/prevData.ser")))
-            {
-                prev = (HashSet)fin.readObject();
-            }
-            catch(Exception e){}
+            prev = (HashSet)fin.readObject();
         }
+        catch(Exception e){}
 
         for(WebElement row:rows)
         {
@@ -141,65 +147,81 @@ public class script {
                     cols.get(5).getAttribute("stationid"),
                     cols.get(5).getAttribute("companyid")
             );
+
             data.add(t);
-            if(!firstRun && !prev.contains(Integer.parseInt(cols.get(5).getAttribute("companyid"))))
+
+            if(!prev.contains(Integer.parseInt(cols.get(5).getAttribute("companyid"))))
                 newps.add(t);
             companyIds.add(Integer.parseInt(cols.get(5).getAttribute("companyid")));
         }
+
         if(prev.size()!=companyIds.size())
             System.out.println(Math.abs(prev.size() - companyIds.size()) +" New Stations Added!");
 
-        // serialize hashset
+        // store meta
+        try(BufferedWriter bw = new BufferedWriter(new FileWriter("./data/meta.txt")))
+        {
+            bw.write(Integer.toString(companyIds.size()));
+
+        }catch(Exception e){}
+
+        // serialize HashSet
         try(ObjectOutputStream fout = new ObjectOutputStream(new FileOutputStream("./data/prevData.ser")))
         {
             fout.writeObject(companyIds);
         }catch(Exception e){}
 
-//        assert statIds.size()==companyIds.size() : "unequal";
+        if(!newps.isEmpty())
+            for(Station s:newps)
+                System.out.println(s.getName()+" || "+s.getLocation()+" || "+s.getDomain());
 
-        // scrape stipend and branches
         for(Station s:data)
         {
+            System.out.print("Fetching details of station: "+s.getName());
             driver.navigate().to("http://psd.bits-pilani.ac.in/Student/StationproblemBankDetails.aspx?CompanyId="+s.getCompanyId()+"&StationId="+s.getStationId()+"&BatchIdFor=9&PSTypeFor=3");
             WebElement stp = null;
             WebElement br = null;
             WebElement des = null;
+            WebElement skillSet = null;
+            WebElement prefElec = null;
             try {
                 stp = driver.findElement(By.xpath("//*[@id=\"Stipend\"]"));
                 br = driver.findElement(By.xpath(("//*[@id=\"Project\"]/table/tbody/tr[5]/td[3]/div")));
                 des = driver.findElement(By.xpath("/html/body/form/div[3]/div[2]/div/div[2]/table[1]/tbody/div/table/tbody/tr[2]/td[2]"));
+                skillSet = driver.findElement(By.xpath("/html/body/form/div[3]/div[2]/div/div[2]/table[1]/tbody/div/table/tbody/tr[3]/td[2]"));
+                prefElec = driver.findElement(By.xpath("/html/body/form/div[3]/div[2]/div/div[2]/table[1]/tbody/div/table/tbody/tr[5]/td[2]"));
+
             }catch(Exception e)
             {}
             s.setStipend(stp==null?"":stp.getText());
             s.setBranches(br==null?"":br.getText());
+            s.setSkillSet(skillSet==null?"":skillSet.getText());//==null?"":skillSet.getText()));
+            s.setPrefElecs(prefElec==null?"":prefElec.getText());
             String clean = "";
             try{
+                assert des != null;
                 clean = des.getText();
             }
-            catch (Exception e)
+            catch (NullPointerException e)
             {}
             clean = clean==null?"":clean.replace(',', '|');
             s.setDescription(clean);
+            System.out.println(" || "+s.getStipend()+" || "+s.getBranches());
         }
-
-        if(!newps.isEmpty())
-            for(Station s:newps)
-                System.out.println(s.getName()+" "+s.getLocation()+" "+s.getStipend()+" "+s.getDomain());
 
         // write to csv
         File file = new File("./data/stations_"+new SimpleDateFormat("dd-MM-yyyy").format(new Date())+".csv");
 
-        try(BufferedWriter bw = new BufferedWriter(new FileWriter(file));){
-            bw.write("Name,Domain,Stipend,Location,Branches,Project Description");
+        try(BufferedWriter bw = new BufferedWriter(new FileWriter(file))){
+            bw.write("Name,Domain,Stipend,Location,Branches,Project Description,Reqd Skill Sets, Reqd Electives");
             bw.newLine();
             for(Station st:data)
             {
-                bw.write(st.getName()+","+st.getDomain()+","+st.getStipend()+","+st.getLocation()+","+st.getBranches()+","+st.getDescription());
+                bw.write(st.getName()+","+st.getDomain()+","+st.getStipend()+","+st.getLocation()+","+st.getBranches()+","+st.getDescription()+","+st.getSkillSet()+","+st.getPrefElecs());
                 bw.newLine();
             }
-        }catch(IOException e) {}
+        }catch(IOException e){}
 
         driver.close();
     }
 }
-// 243
