@@ -14,11 +14,10 @@ After downloading, paste and overwrite it in the `drivers` folder.
 
 1. Download the repo ZIP
 2. Go into the root directory of the project and run from terminal/cmd
-`java -jar PS2_FormFiller-1.0-SNAPSHOT-jar-with-dependencies.jar <flag> <username> <password> <path to modified pref sheet>`
-
-*flags*:
-`--fetch` for downloading the station data
-`--upload` to fill the form from your edited sheet
+    - For downloading the station data  
+    run `java -jar PS2_FormFiller-1.0-SNAPSHOT-jar-with-dependencies.jar --fetch <username> <password>`
+    - To fill the form from your edited sheet  
+    run `java -jar PS2_FormFiller-1.0-SNAPSHOT-jar-with-dependencies.jar --upload <username> <password>  <path to modified pref sheet>`
 
 # Building from source
 
@@ -29,4 +28,3 @@ After downloading, paste and overwrite it in the `drivers` folder.
     https://www.mkyong.com/maven/how-to-install-maven-in-windows/ (windows)
 3. cd into project repo root
 4. run `mvn clean compile assembly:single`
-5. run `java -jar PS2_FormFiller-1.0-SNAPSHOT-jar-with-dependencies.jar <username> <password>`
