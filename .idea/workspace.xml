@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="03836d6a-e20d-4bc5-b5c2-6ff83b23615e" name="Default Changelist" comment="added mvn jar build with dependencies">
+    <list default="true" id="03836d6a-e20d-4bc5-b5c2-6ff83b23615e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/.~lock.stations_14-11-2019.csv#" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/meta.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/meta.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/prevData.ser" beforeDir="false" afterPath="$PROJECT_DIR$/data/prevData.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/script.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/script.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Station.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Station.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/script.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/script.class" afterDir="false" />
@@ -64,6 +61,7 @@
     <configuration name="script" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="script" />
       <module name="PS2_FormFiller" />
+      <option name="PROGRAM_PARAMETERS" value="--upload f20160255@hyderabad.bits-pilani.ac.in 4V113RHO ./data/stations_mod.csv" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -92,7 +90,7 @@
       <workItem from="1573304939910" duration="1940000" />
       <workItem from="1573397488636" duration="9226000" />
       <workItem from="1573623196680" duration="5541000" />
-      <workItem from="1573679793812" duration="23365000" />
+      <workItem from="1573679793812" duration="27004000" />
     </task>
     <task id="LOCAL-00001" summary="Selenium only implementation, added stipend scraping">
       <created>1572686789144</created>
@@ -136,7 +134,14 @@
       <option name="project" value="LOCAL" />
       <updated>1573795274802</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="added auto fill from csv">
+      <created>1573852464293</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1573852464293</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -161,23 +166,10 @@
     <MESSAGE value="added new station check" />
     <MESSAGE value="added more info extraction" />
     <MESSAGE value="added mvn jar build with dependencies" />
-    <option name="LAST_COMMIT_MESSAGE" value="added mvn jar build with dependencies" />
+    <MESSAGE value="added auto fill from csv" />
+    <option name="LAST_COMMIT_MESSAGE" value="added auto fill from csv" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/script.java</url>
-          <line>239</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/script.java</url>
-          <line>272</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
         <watch expression="sidToPos.get(currSId)" language="JAVA" />
