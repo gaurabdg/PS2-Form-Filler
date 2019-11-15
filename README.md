@@ -2,6 +2,13 @@
 
 download link: https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html
 
+**Chrome Compatibility**
+The chromedriver used is dependent on your chrome browser version.
+Check here:
+https://chromedriver.chromium.org/downloads
+
+After downloading, paste and overwrite it in the `drivers` folder.
+
 # Running executable
 
 Go into the root directory of the project and run from terminal/cmd
