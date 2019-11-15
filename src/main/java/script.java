@@ -285,7 +285,6 @@ public class script {
             System.out.println("specify function(flag)");
             return;
         }
-        //"4V113RHO"
 
         driver.close();
     }
