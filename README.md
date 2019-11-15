@@ -1,13 +1,13 @@
-Make sure you have java installed on your machine
+**Make sure you have java installed on your machine**
 
 download link: https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html
 
-Running executable
+# Running executable
 
 Go into the root directory of the project and run from terminal/cmd
 `java -jar PS2_FormFiller-1.0-SNAPSHOT-jar-with-dependencies.jar <username> <password>`
 
-Building from source
+# Building from source
 
 1. Fork/clone the repo
 2. Setup Maven
