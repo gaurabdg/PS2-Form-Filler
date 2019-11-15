@@ -12,8 +12,13 @@ After downloading, paste and overwrite it in the `drivers` folder.
 
 # Running executable
 
-Go into the root directory of the project and run from terminal/cmd
-`java -jar PS2_FormFiller-1.0-SNAPSHOT-jar-with-dependencies.jar <username> <password>`
+1. Download the repo ZIP
+2. Go into the root directory of the project and run from terminal/cmd
+`java -jar PS2_FormFiller-1.0-SNAPSHOT-jar-with-dependencies.jar <flag> <username> <password> <path to modified pref sheet>`
+
+*flags*:
+`--fetch` for downloading the station data
+`--upload` to fill the form from your edited sheet
 
 # Building from source
 
