@@ -1,6 +1,5 @@
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -113,11 +112,11 @@ public class script {
 
         WebElement username = driver.findElement(By.id("TxtEmail"));
         username.clear();
-        username.sendKeys("f20160255@hyderabad.bits-pilani.ac.in");
+        username.sendKeys(args[0]);
 
         WebElement pass = driver.findElement(By.id("txtPass"));
         pass.clear();
-        pass.sendKeys("4V113RHO");
+        pass.sendKeys(args[1]);
 
         driver.findElement(By.id("Button1")).click();
 

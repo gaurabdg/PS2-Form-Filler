@@ -3,10 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="03836d6a-e20d-4bc5-b5c2-6ff83b23615e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/drivers/chromedriver" beforeDir="false" afterPath="$PROJECT_DIR$/drivers/chromedriver" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/script.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/script.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Station.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Station.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/script.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/script.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -38,6 +39,12 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="mvn clean compile assembly:single " />
+    </option>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -83,7 +90,7 @@
       <workItem from="1573304939910" duration="1940000" />
       <workItem from="1573397488636" duration="9226000" />
       <workItem from="1573623196680" duration="5541000" />
-      <workItem from="1573679793812" duration="3181000" />
+      <workItem from="1573679793812" duration="8187000" />
     </task>
     <task id="LOCAL-00001" summary="Selenium only implementation, added stipend scraping">
       <created>1572686789144</created>
@@ -113,7 +120,14 @@
       <option name="project" value="LOCAL" />
       <updated>1572965064359</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="added more info extraction">
+      <created>1573753109253</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1573753109254</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -136,6 +150,7 @@
     <MESSAGE value="Selenium only implementation, added stipend scraping" />
     <MESSAGE value="added problem statement" />
     <MESSAGE value="added new station check" />
-    <option name="LAST_COMMIT_MESSAGE" value="added new station check" />
+    <MESSAGE value="added more info extraction" />
+    <option name="LAST_COMMIT_MESSAGE" value="added more info extraction" />
   </component>
 </project>
