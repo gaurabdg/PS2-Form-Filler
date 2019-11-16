@@ -4,11 +4,11 @@ download link: https://www.oracle.com/technetwork/java/javase/downloads/jdk11-do
 
 **Chrome Compatibility**
 
-The chromedriver used is dependent on your chrome browser version.
-Check here:
+The chromedriver used is dependent on your os and chrome browser version.
+Check here and download accordingly:
 https://chromedriver.chromium.org/downloads
 
-After downloading, paste and overwrite it in the `drivers` folder.
+After downloading, paste the executable and overwrite(if any) in the `drivers` folder.
 
 # Running executable
 

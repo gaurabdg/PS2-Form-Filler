@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="03836d6a-e20d-4bc5-b5c2-6ff83b23615e" name="Default Changelist" comment="updated readme">
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-    </list>
+    <list default="true" id="03836d6a-e20d-4bc5-b5c2-6ff83b23615e" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,7 +85,7 @@
       <workItem from="1573304939910" duration="1940000" />
       <workItem from="1573397488636" duration="9226000" />
       <workItem from="1573623196680" duration="5541000" />
-      <workItem from="1573679793812" duration="28509000" />
+      <workItem from="1573679793812" duration="28622000" />
     </task>
     <task id="LOCAL-00001" summary="Selenium only implementation, added stipend scraping">
       <created>1572686789144</created>
@@ -159,7 +157,14 @@
       <option name="project" value="LOCAL" />
       <updated>1573857858236</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="updated readme">
+      <created>1573858213042</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1573858213042</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -187,7 +192,8 @@
     <MESSAGE value="added auto fill from csv" />
     <MESSAGE value="optimized form filling" />
     <MESSAGE value="minor changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="minor changes" />
+    <MESSAGE value="updated readme" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated readme" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

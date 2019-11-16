@@ -263,7 +263,11 @@ public class script {
     }
 
     public static void main(String[] args) throws IOException {
-        System.setProperty("webdriver.chrome.driver", "./drivers/chromedriver");
+        if(System.getProperty("os.name").indexOf("ndows")>=0)
+            System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
+        else
+            System.setProperty("webdriver.chrome.driver", "./drivers/chromedriver");
+
         WebDriver driver = new ChromeDriver();
 
         // login
