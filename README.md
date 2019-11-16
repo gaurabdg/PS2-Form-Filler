@@ -2,20 +2,19 @@
 
 download link: https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html
 
-**Chrome Compatibility**
-
-The chromedriver used is dependent on your os and chrome browser version.
-Check here and download accordingly:
-https://chromedriver.chromium.org/downloads
-
-After downloading, paste the executable and overwrite(if any) in the `drivers` folder.
-
 # Running executable
 
 1. Download the repo ZIP
-2. Go into the root directory of the project and run from terminal/cmd
+2. Chrome compatibility
+    The chromedriver used is dependent on your os and chrome browser version.
+    Check here and download accordingly:
+    https://chromedriver.chromium.org/downloads
+
+    After downloading, paste the executable and overwrite(if any) in the `drivers` folder.
+3. Go into the root directory of the project and run from terminal/cmd
     - For downloading the station data  
     run `java -jar PS2_FormFiller-1.0-SNAPSHOT-jar-with-dependencies.jar --fetch <username> <password>`
+    - Just bulk sort/filter the downloaded csv file in Excel, with a few manual rearrangements if needed, and the next step will fill the form in this order.
     - To fill the form from your edited sheet  
     run `java -jar PS2_FormFiller-1.0-SNAPSHOT-jar-with-dependencies.jar --upload <username> <password>  <path to modified pref sheet>`
 
