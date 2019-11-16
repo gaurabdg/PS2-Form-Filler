@@ -5,7 +5,7 @@ download link: https://www.oracle.com/technetwork/java/javase/downloads/jdk11-do
 # Running executable
 
 1. Download the repo ZIP
-2. Chrome compatibility
+2. Chrome compatibility:  
     The chromedriver used is dependent on your os and chrome browser version.
     Check here and download accordingly:
     https://chromedriver.chromium.org/downloads
