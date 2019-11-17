@@ -1,7 +1,7 @@
 **Make sure you have java installed on your machine**
 
 download link: https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html
-
+> IF YOU ARE FACING ANY PROBLEMS, PLEASE RE-DOWNLOAD, THE ISSUE MIGHT HAVE BEEN SOLVED IN LATER RELEASES
 # Running executable
 
 1. Download the repo ZIP
