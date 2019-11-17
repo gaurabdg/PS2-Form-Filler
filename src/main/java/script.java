@@ -258,8 +258,9 @@ public class script {
 
         }
 
-        driver.findElement(By.xpath("//*[@id=\"btnSave\"]")).click();
-        driver.switchTo().alert().accept();
+//        driver.findElement(By.xpath("//*[@id=\"btnSave\"]")).click();
+//        driver.switchTo().alert().accept();
+        System.out.println("***SAVE YOUR PREFERENCES***");
     }
 
     public static void main(String[] args) throws IOException {
@@ -290,6 +291,6 @@ public class script {
             return;
         }
 
-        driver.close();
+//        driver.close();
     }
 }
