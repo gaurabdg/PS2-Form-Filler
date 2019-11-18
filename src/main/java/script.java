@@ -179,15 +179,7 @@ public class script {
             s.setBranches(br==null?"":br.getText());
             s.setSkillSet(skillSet==null?"":skillSet.getText());//==null?"":skillSet.getText()));
             s.setPrefElecs(prefElec==null?"":prefElec.getText());
-            String clean = "";
-            try{
-                assert des != null;
-                clean = des.getText();
-            }
-            catch (NullPointerException e)
-            {}
-            clean = clean==null?"":clean.replace(',', '|');
-            s.setDescription(clean);
+            s.setDescription(des==null?"":des.getText());
             System.out.println(" || "+s.getStipend()+" || "+s.getBranches());
         }
 
@@ -199,7 +191,7 @@ public class script {
             bw.newLine();
             for(Station st:data)
             {
-                bw.write(st.getStationId()+","+st.getName()+","+st.getDomain()+","+st.getStipend()+","+st.getLocation()+","+st.getBranches()+","+st.getDescription()+","+st.getSkillSet()+","+st.getPrefElecs());
+                bw.write(st.getStationId()+","+st.getName()+","+st.getDomain()+","+st.getStipend()+","+st.getLocation()+","+st.getBranches()+","+"\""+st.getDescription()+"\""+","+"\""+st.getSkillSet()+"\""+","+"\""+st.getPrefElecs()+"\"");
                 bw.newLine();
             }
         }catch(IOException e){}

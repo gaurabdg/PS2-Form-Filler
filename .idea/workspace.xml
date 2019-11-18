@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="03836d6a-e20d-4bc5-b5c2-6ff83b23615e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+    <list default="true" id="03836d6a-e20d-4bc5-b5c2-6ff83b23615e" name="Default Changelist" comment="updated readme">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PS2_FormFiller-1.0-SNAPSHOT-jar-with-dependencies.jar" beforeDir="false" afterPath="$PROJECT_DIR$/PS2_FormFiller-1.0-SNAPSHOT-jar-with-dependencies.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/meta.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/meta.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/prevData.ser" beforeDir="false" afterPath="$PROJECT_DIR$/data/prevData.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/script.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/script.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/script.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/script.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -88,7 +93,8 @@
       <workItem from="1573397488636" duration="9226000" />
       <workItem from="1573623196680" duration="5541000" />
       <workItem from="1573679793812" duration="28622000" />
-      <workItem from="1573981449432" duration="6073000" />
+      <workItem from="1573981449432" duration="8260000" />
+      <workItem from="1574076283011" duration="2383000" />
     </task>
     <task id="LOCAL-00001" summary="Selenium only implementation, added stipend scraping">
       <created>1572686789144</created>
