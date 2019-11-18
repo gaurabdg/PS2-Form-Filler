@@ -1,3 +1,5 @@
+import org.apache.commons.csv.CSVFormat;
+import org.apache.commons.csv.CSVRecord;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -102,6 +104,8 @@ class Station{
 }
 
 public class script {
+    private static String[] headers = {"StationId", "Name", "Domain", "Stipend", "Location", "Branches",
+            "Project Description", "Reqd Skill Sets", "Reqd Electives"};
     private static void fetchData(WebDriver driver)
     {
         driver.navigate().to("http://psd.bits-pilani.ac.in/Student/ViewActiveStationProblemBankData.aspx");
@@ -187,11 +191,19 @@ public class script {
         File file = new File("./data/stations_"+new SimpleDateFormat("dd-MM-yyyy").format(new Date())+".csv");
 
         try(BufferedWriter bw = new BufferedWriter(new FileWriter(file))){
-            bw.write("StationId,Name,Domain,Stipend,Location,Branches,Project Description,Reqd Skill Sets, Reqd Electives");
+            for (String header: headers)
+            {
+                bw.write(String.format("\"%s\",", header));
+            }
             bw.newLine();
             for(Station st:data)
             {
-                bw.write(st.getStationId()+","+st.getName()+","+st.getDomain()+","+st.getStipend()+","+st.getLocation()+","+st.getBranches()+","+"\""+st.getDescription()+"\""+","+"\""+st.getSkillSet()+"\""+","+"\""+st.getPrefElecs()+"\"");
+                String[] values = {st.getStationId(), st.getName(), st.getDomain(), st.getStipend(),
+                        st.getLocation(), st.getBranches(), st.getDescription(), st.getSkillSet(), st.getPrefElecs()};
+                for (String value: values)
+                {
+                    bw.write(String.format("\"%s\",", value));
+                }
                 bw.newLine();
             }
         }catch(IOException e){}
@@ -214,20 +226,19 @@ public class script {
 
         System.out.println("starting swaps...");
         int toPos = 1;
-        BufferedReader csvr = new BufferedReader(new FileReader(path));
-        String row;
+        Reader in = new FileReader(path);
         boolean first = true;
 
-        while((row = csvr.readLine()) != null)
+        for (CSVRecord csvRecord: CSVFormat.EXCEL.withHeader(headers).parse(in))
         {
             if(first)
             {
                 first = false;
                 continue;
             }
-            String[] data = row.split(",");
-            String currSId = data[0];
-            System.out.println(data[0]+" "+data[1]);
+            String currSId = csvRecord.get("StationId");
+            String currSName = csvRecord.get("Name");
+            System.out.println(String.format("%s %s", currSId, currSName));
             int currElePos = sidToPos.get(currSId);
             WebElement from = driver.findElement(By.xpath("//*[@id=\"sortable_nav\"]/li["+currElePos+"]/span"));
             WebElement to = driver.findElement(By.xpath("//*[@id=\"sortable_nav\"]/li["+toPos+"]/span"));
