@@ -14,6 +14,7 @@ download link: https://www.oracle.com/technetwork/java/javase/downloads/jdk11-do
     - For **downloading** the station data  
     run `java -jar PS2_FormFiller-1.0-SNAPSHOT-jar-with-dependencies.jar --fetch <username> <password>`
     - Just bulk sort/filter the downloaded csv file in Excel, with a few manual rearrangements if needed, and the next step will fill the form in this order.
+    - **IMP** : Before running the upload part please re-download the jar file(if you have downloaded on or before 18th Nov) as it has some minor improvements and fetch again because new stations have been added.
     - To **fill the form** from your edited sheet  
     run `java -jar PS2_FormFiller-1.0-SNAPSHOT-jar-with-dependencies.jar --upload <username> <password>  <path to modified pref sheet>`
     - Then save your preferences.
