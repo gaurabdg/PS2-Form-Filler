@@ -18,6 +18,7 @@ download link: https://www.oracle.com/technetwork/java/javase/downloads/jdk11-do
     - To **fill the form** from your edited sheet  
     run `java -jar PS2_FormFiller-1.0-SNAPSHOT-jar-with-dependencies.jar --upload <username> <password>  <path to modified pref sheet>`
     - Then save your preferences.
+        - **Older versions**: You might get an exception at the end of the swapping. Please ignore and proceed by manually saving all the preferences.
     - NOTE: After running the script please manually check if there are minor discrepancies
     because there is faulty data in the psd website.
 
