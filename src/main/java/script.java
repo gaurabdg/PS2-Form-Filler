@@ -239,6 +239,8 @@ public class script {
             String currSId = csvRecord.get("StationId");
             String currSName = csvRecord.get("Name");
             System.out.println(String.format("%s %s", currSId, currSName));
+            if(sidToPos.get(currSId)==null)
+                continue;
             int currElePos = sidToPos.get(currSId);
             WebElement from = driver.findElement(By.xpath("//*[@id=\"sortable_nav\"]/li["+currElePos+"]/span"));
             WebElement to = driver.findElement(By.xpath("//*[@id=\"sortable_nav\"]/li["+toPos+"]/span"));
