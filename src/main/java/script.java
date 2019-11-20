@@ -172,7 +172,7 @@ public class script {
             WebElement prefElec = null;
             try {
                 stp = driver.findElement(By.xpath("//*[@id=\"Stipend\"]"));
-                br = driver.findElement(By.xpath(("//*[@id=\"Project\"]/table/tbody/tr[5]/td[3]/div")));
+                br = driver.findElement(By.xpath(("//*[@id=\"Project\"]/table/tbody/tr[5]/td[3]")));
                 des = driver.findElement(By.xpath("/html/body/form/div[3]/div[2]/div/div[2]/table[1]/tbody/div/table/tbody/tr[2]/td[2]"));
                 skillSet = driver.findElement(By.xpath("/html/body/form/div[3]/div[2]/div/div[2]/table[1]/tbody/div/table/tbody/tr[3]/td[2]"));
                 prefElec = driver.findElement(By.xpath("/html/body/form/div[3]/div[2]/div/div[2]/table[1]/tbody/div/table/tbody/tr[5]/td[2]"));
@@ -180,7 +180,18 @@ public class script {
             }catch(Exception e)
             {}
             s.setStipend(stp==null?"":stp.getText());
-            s.setBranches(br==null?"":br.getText());
+//            s.setBranches(br==null?"":br.getText());
+            String brstr = "";
+            if(br!=null)
+            {
+                List<WebElement> brs = br.findElements(By.className("grouptag"));
+                System.out.println(brs.size());
+                for(WebElement w:brs)
+                    brstr+=w.getText();
+            }
+            else
+                brstr+="-";
+            s.setBranches(brstr);
             s.setSkillSet(skillSet==null?"":skillSet.getText());//==null?"":skillSet.getText()));
             s.setPrefElecs(prefElec==null?"":prefElec.getText());
             s.setDescription(des==null?"":des.getText());
