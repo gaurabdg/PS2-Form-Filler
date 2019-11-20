@@ -185,7 +185,7 @@ public class script {
             if(br!=null)
             {
                 List<WebElement> brs = br.findElements(By.className("grouptag"));
-                System.out.println(brs.size());
+//                System.out.println(brs.size());
                 for(WebElement w:brs)
                     brstr+=w.getText();
             }
