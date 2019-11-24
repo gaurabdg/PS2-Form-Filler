@@ -15,6 +15,7 @@ download link: https://www.oracle.com/technetwork/java/javase/downloads/jdk11-do
     run `java -jar PS2_FormFiller-1.0-SNAPSHOT-jar-with-dependencies.jar --fetch <username> <password>`
     - It will be saved in `data` folder. 
     - Just bulk sort/filter the downloaded csv file in Excel, with a few manual rearrangements if needed, and the next step will fill the form in this order.
+    - **IMP** : After editing the csv in Excel **DONT SAVE AS XLSX**. Only save as CSV as it messes up with the format and will give you an error.
     - **IMP** : Before running the upload part please re-download the jar file(if you have downloaded on or before 18th Nov) as it has some minor improvements and fetch again because new stations have been added.
     - To **fill the form** from your edited sheet  
     run `java -jar PS2_FormFiller-1.0-SNAPSHOT-jar-with-dependencies.jar --upload <username> <password>  <path to modified pref sheet>`
