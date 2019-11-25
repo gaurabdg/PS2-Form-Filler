@@ -124,6 +124,7 @@ public class script {
         }
         catch(Exception e){}
 
+        System.out.println("Fetching stations ...");
         for(WebElement row:rows)
         {
             List<WebElement> cols = row.findElements(By.tagName("td"));
