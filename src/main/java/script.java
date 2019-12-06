@@ -272,12 +272,12 @@ public class script {
 
     private static void checkAllotment(WebDriver driver)
     {
-
         WebElement t = driver.findElement(By.xpath("/html/body/form/div[4]/div/div/div/div[2]/div/div[1]/div/div[3]/span/span[2]"));
         if(!t.getText().equals("-"))
-            System.out.println("|||||||||||||||||||||||Station Alloted: "+t.getText());
+            System.out.println("Station Alloted: "+t.getText());
+
         else
-            System.out.println("****nope, not yet");
+            System.err.println("nope not yet");
     }
 
     public static void main(String[] args) throws IOException {
@@ -286,13 +286,10 @@ public class script {
         else
             System.setProperty("webdriver.chrome.driver", "drivers/chromedriver");
 
+        System.setProperty("webdriver.chrome.logfile", "status.log");
         ChromeOptions options = new ChromeOptions();
-        options.setBinary(System.getenv("GOOGLE_CHROME_BIN"));
         options.addArguments("--headless");
-        options.addArguments("--headless");
-        options.addArguments("--disable-dev-shm-usage");
-        options.addArguments("--no-sandbox");
-        // driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
+        options.addArguments("--log-level=OFF");
         WebDriver driver = new ChromeDriver(options);
         
         // login
