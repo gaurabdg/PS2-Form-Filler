@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
 
 import java.io.*;
@@ -181,12 +182,10 @@ public class script {
             }catch(Exception e)
             {}
             s.setStipend(stp==null?"":stp.getText());
-//            s.setBranches(br==null?"":br.getText());
             String brstr = "";
             if(br!=null)
             {
                 List<WebElement> brs = br.findElements(By.className("grouptag"));
-//                System.out.println(brs.size());
                 for(WebElement w:brs)
                     brstr+=w.getText();
             }
@@ -219,13 +218,13 @@ public class script {
                 bw.newLine();
             }
         }catch(IOException e){}
+
+        driver.close();
     }
 
     private static void uploadData(WebDriver driver, String path) throws IOException {
         driver.navigate().to("http://psd.bits-pilani.ac.in/Student/StudentStationPreference.aspx");
         HashMap<String, Integer> sidToPos = new HashMap<>();
-        // for testing
-//        driver.findElement(By.xpath("//*[@id=\"Reset\"]")).click();
 
         WebElement statList = driver.findElement(By.xpath("//*[@id=\"sortable_nav\"]"));
         List<WebElement> stats = statList.findElements(By.tagName("li"));
@@ -266,28 +265,36 @@ public class script {
                     sidToPos.put((String) e.getKey(), pos+1);
             }
 
-            // In case above code portion (for loop) fails
-//            for(int i=toPos;i<=stats.size();i++)
-//            {
-//                WebElement curr = driver.findElement(By.xpath("//*[@id=\"sortable_nav\"]/li["+i+"]/span"));
-//                sidToPos.put(curr.getAttribute("spn"),i);
-//            }
-
         }
 
-//        driver.findElement(By.xpath("//*[@id=\"btnSave\"]")).click();
-//        driver.switchTo().alert().accept();
         System.out.println("***SAVE YOUR PREFERENCES***");
+    }
+
+    private static void checkAllotment(WebDriver driver)
+    {
+
+        WebElement t = driver.findElement(By.xpath("/html/body/form/div[4]/div/div/div/div[2]/div/div[1]/div/div[3]/span/span[2]"));
+        if(!t.getText().equals("-"))
+            System.out.println("|||||||||||||||||||||||Station Alloted: "+t.getText());
+        else
+            System.out.println("****nope, not yet");
     }
 
     public static void main(String[] args) throws IOException {
         if(System.getProperty("os.name").indexOf("ndows")>=0)
             System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
         else
-            System.setProperty("webdriver.chrome.driver", "./drivers/chromedriver");
+            System.setProperty("webdriver.chrome.driver", "drivers/chromedriver");
 
-        WebDriver driver = new ChromeDriver();
-
+        ChromeOptions options = new ChromeOptions();
+        options.setBinary(System.getenv("GOOGLE_CHROME_BIN"));
+        options.addArguments("--headless");
+        options.addArguments("--headless");
+        options.addArguments("--disable-dev-shm-usage");
+        options.addArguments("--no-sandbox");
+        // driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
+        WebDriver driver = new ChromeDriver(options);
+        
         // login
         driver.navigate().to("http://psd.bits-pilani.ac.in");
         WebElement username = driver.findElement(By.id("TxtEmail"));
@@ -302,12 +309,12 @@ public class script {
             fetchData(driver);
         else if(args[0].equals("--upload"))
             uploadData(driver, args[3]);
+        else if(args[0].equals("--check"))
+            checkAllotment(driver);
         else
         {
             System.out.println("specify function(flag)");
             return;
         }
-
-//        driver.close();
     }
 }
