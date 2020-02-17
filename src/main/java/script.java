@@ -12,7 +12,7 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 class Station{
-    private String nam;
+    private String name;
     private String domain;
     private String location;
     private String stipend;
