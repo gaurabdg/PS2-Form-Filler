@@ -132,15 +132,15 @@ public class script {
             Station t = new Station(cols.get(2).getText(),
                     cols.get(3).getText(),
                     cols.get(1).getText(),
-                    cols.get(5).getAttribute("stationid"),
-                    cols.get(5).getAttribute("companyid")
+                    cols.get(4).getAttribute("stationid"),
+                    cols.get(4).getAttribute("companyid")
             );
 
             data.add(t);
 
-            if(!prev.contains(Integer.parseInt(cols.get(5).getAttribute("companyid"))))
+            if(!prev.contains(Integer.parseInt(cols.get(4).getAttribute("companyid"))))
                 newps.add(t);
-            companyIds.add(Integer.parseInt(cols.get(5).getAttribute("companyid")));
+            companyIds.add(Integer.parseInt(cols.get(4).getAttribute("companyid")));
         }
 
         if(prev.size()!=companyIds.size())
