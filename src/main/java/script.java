@@ -288,8 +288,8 @@ public class script {
 
         System.setProperty("webdriver.chrome.logfile", "status.log");
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--headless");
-        options.addArguments("--log-level=OFF");
+      //  options.addArguments("--headless");
+//        options.addArguments("--log-level=OFF");
         WebDriver driver = new ChromeDriver(options);
         
         // login
