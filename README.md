@@ -1,3 +1,5 @@
+> Note: Worked for PS2 Sem-2 19/20. I haven't tested or modified for PS2 Sem-1 20/21. I am sorry for not being able to fix issues at the moment as I am busy with my current project.
+
 **Make sure you have java installed on your machine**
 
 download link: https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html
