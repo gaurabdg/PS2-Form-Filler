@@ -166,18 +166,31 @@ public class script {
         for(Station s:data)
         {
             System.out.print("Fetching details of station: "+" "+s.getStationId()+" "+s.getCompanyId()+" "+s.getName());
-            driver.navigate().to("http://psd.bits-pilani.ac.in/Student/StationproblemBankDetails.aspx?CompanyId="+s.getCompanyId()+"&StationId="+s.getStationId()+"&BatchIdFor=9&PSTypeFor=3");
+            driver.navigate().to("http://psd.bits-pilani.ac.in/Student/StationproblemBankDetails.aspx?CompanyId="+s.getCompanyId()+"&StationId="+s.getStationId()+"&BatchIdFor=10&PSTypeFor=2");
             WebElement stp = null;
             WebElement br = null;
-            WebElement des = null;
-            WebElement skillSet = null;
-            WebElement prefElec = null;
+            String des = "";
+            String skillSet = "";
+            String prefElec = "";
             try {
                 stp = driver.findElement(By.xpath("//*[@id=\"Stipend\"]"));
-                br = driver.findElement(By.xpath(("//*[@id=\"Project\"]/table/tbody/tr[5]/td[3]")));
-                des = driver.findElement(By.xpath("/html/body/form/div[3]/div[2]/div/div[2]/table[1]/tbody/div/table/tbody/tr[2]/td[2]"));
-                skillSet = driver.findElement(By.xpath("/html/body/form/div[3]/div[2]/div/div[2]/table[1]/tbody/div/table/tbody/tr[3]/td[2]"));
-                prefElec = driver.findElement(By.xpath("/html/body/form/div[3]/div[2]/div/div[2]/table[1]/tbody/div/table/tbody/tr[5]/td[2]"));
+                br = driver.findElement(By.xpath("//*[@id=\"Project\"]/table/tbody/tr[5]/td[3]"));
+                List<WebElement> projects = driver.findElements(By.xpath("//*[@id=\"Project\"]"));
+                for (int i = 1; i < projects.size(); i++) {
+                    String prefix = "PROJECT-" + i + ": ";
+                    des += prefix + driver.findElement(By.xpath("/html/body/form/div[3]/div[2]/div"
+                            + "/div[2"
+                            + "]/table[1]/tbody/div[" + i + "]/table/tbody/tr[2]/td[2]")).getText()
+                    + '\n';
+                    skillSet += prefix + driver.findElement(By.xpath("/html/body/form/div[3]/div[2"
+                            + "]/div/div"
+                            + "[2]/table[1]/tbody/div[" + i + "]/table/tbody/tr[3]/td[2]")).getText()
+                    + '\n';
+                    prefElec += prefix + driver.findElement(By.xpath("/html/body/form/div[3]/div[2"
+                            + "]/div/div"
+                            + "[2]/table[1]/tbody/div[" + i + "]/table/tbody/tr[5]/td[2]")).getText()
+                    + '\n';
+                }
 
             }catch(Exception e)
             {}
@@ -192,9 +205,9 @@ public class script {
             else
                 brstr+="-";
             s.setBranches(brstr);
-            s.setSkillSet(skillSet==null?"":skillSet.getText());//==null?"":skillSet.getText()));
-            s.setPrefElecs(prefElec==null?"":prefElec.getText());
-            s.setDescription(des==null?"":des.getText());
+            s.setSkillSet(skillSet);//==null?"":skillSet.getText()));
+            s.setPrefElecs(prefElec);
+            s.setDescription(des);
             System.out.println(" || "+s.getStipend()+" || "+s.getBranches());
         }
 
