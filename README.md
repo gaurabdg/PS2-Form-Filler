@@ -1,4 +1,5 @@
-> Note: Worked for PS2 Sem-2 19/20. I haven't tested or modified for PS2 Sem-1 20/21. I am sorry for not being able to fix issues at the moment as I am busy with my current project.
+> Note: I have solved the issues reported for PS2 Sem1 20/21. Please create an issue if you
+> encounter any further problems, with accurate decriptions and error logs(if possible).
 
 **Make sure you have java installed on your machine**
 
